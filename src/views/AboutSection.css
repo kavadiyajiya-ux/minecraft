@@ -1,0 +1,57 @@
+.about-section {
+  padding-bottom: 6rem;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  max-width: 900px;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.about-card {
+  text-align: center;
+  transition: all 0.35s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.about-card-icon {
+  color: var(--color-accent-blue);
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.about-card h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.about-card p {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.5;
+}
+
+.about-highlight {
+  max-width: 700px;
+  text-align: center;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.about-highlight p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.about-highlight strong {
+  color: var(--color-accent-gold);
+}
