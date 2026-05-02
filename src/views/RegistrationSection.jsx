@@ -32,7 +32,7 @@ const RegistrationSection = () => {
           <h2 className="pixel-text success-title">Server Joined!</h2>
           <p className="success-subtitle">🎉 Your registration has been submitted successfully.</p>
           <button className="reset-btn" onClick={() => { setIsJoined(false); setCurrentStep(1); setFormData({ name: '', email: '', phone: '', teamName: '', members: '', domain: '' }); }}>
-            Register Another Team
+            Spawn Another Team
           </button>
         </div>
       </section>
@@ -41,7 +41,9 @@ const RegistrationSection = () => {
 
   return (
     <section className="section registration-section" id="registration">
-      <h2 className="section-title pixel-text">⚔️ Join The Quest</h2>
+      <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
+        <h2 className="mc-badge">◆ SPAWN IN ◆</h2>
+      </div>
 
       <GlassPanel className="reg-panel">
         <div className="reg-header">

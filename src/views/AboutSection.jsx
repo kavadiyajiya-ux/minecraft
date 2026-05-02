@@ -1,35 +1,38 @@
 import React from 'react';
-import GlassPanel from '../components/GlassPanel';
-import { MapPin, Clock, Users, Zap } from 'lucide-react';
+import { Pickaxe, Sword, Sparkles, Shield } from 'lucide-react';
 import './AboutSection.css';
 
 const AboutSection = () => {
   const cards = [
-    { icon: <Zap size={28} />, title: '24 Hours', desc: 'Non-stop building, innovating, and creating something extraordinary.' },
-    { icon: <Users size={28} />, title: '500+ Builders', desc: 'Join a massive community of developers, designers, and innovators.' },
-    { icon: <MapPin size={28} />, title: 'Campus Arena', desc: 'Institute of Technology Campus — Main Hall, fully equipped.' },
-    { icon: <Clock size={28} />, title: 'Oct 24, 2026', desc: 'Gates open at 09:00 AM. Be ready for the adventure of a lifetime.' },
+    { icon: <Pickaxe size={24} />, title: 'MINE IDEAS', desc: '48 hours of relentless building, prototyping, and shipping.' },
+    { icon: <Sword size={24} />, title: 'BATTLE BUGS', desc: 'Squash glitches, defeat blockers, slay scope creep.' },
+    { icon: <Sparkles size={24} />, title: 'CRAFT MAGIC', desc: 'Forge code into experiences worth showing off.' },
+    { icon: <Shield size={24} />, title: 'SURVIVE & WIN', desc: 'Outlast the night. Claim diamond-tier loot at sunrise.' },
   ];
 
   return (
     <section className="section about-section" id="about">
-      <h2 className="section-title pixel-text">📍 About The Event</h2>
-      <div className="about-grid">
+      <div className="text-center mb-10" style={{ textAlign: "center", marginBottom: "3rem" }}>
+        <h2 className="mc-badge" style={{ marginBottom: "2rem" }}>◆ THE QUEST ◆</h2>
+        
+        <div className="quest-intro">
+          <h3 className="pixel-text quest-welcome">Welcome To The Server</h3>
+          <p className="quest-desc">
+            <strong>HackSprint 6.0</strong> is a 48-hour cinematic build-marathon. 
+            Spawn in, team up, and craft the future from raw blocks of code.
+          </p>
+        </div>
+      </div>
+
+      <div className="flash-cards-grid">
         {cards.map((card, i) => (
-          <GlassPanel key={i} className="about-card">
-            <div className="about-card-icon">{card.icon}</div>
-            <h3>{card.title}</h3>
-            <p>{card.desc}</p>
-          </GlassPanel>
+          <div key={i} className="flash-card">
+            <div className="flash-icon-box">{card.icon}</div>
+            <h3 className="pixel-text flash-title">{card.title}</h3>
+            <p className="flash-desc">{card.desc}</p>
+          </div>
         ))}
       </div>
-      <GlassPanel className="about-highlight">
-        <p>
-          <strong>HackSprint 6.0</strong> is the ultimate inter-college hackathon where teams of 2–4 members 
-          compete across cutting-edge domains. Bring your ideas, your passion, and your code — 
-          we'll provide the rest. 🚀
-        </p>
-      </GlassPanel>
     </section>
   );
 };

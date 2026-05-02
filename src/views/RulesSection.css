@@ -1,51 +1,252 @@
-.rules-section {
+.map-section {
   padding-bottom: 6rem;
+  position: relative;
 }
 
-.rules-panel {
-  max-width: 750px;
-  width: 100%;
+.map-welcome {
+  color: #ffffff;
+  font-size: 1.1rem;
+  margin-bottom: 1.2rem;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.4), 2px 2px 0 rgba(0, 0, 0, 0.8);
 }
 
-.rules-list {
+/* ===========================
+   CURVED SNAKE MAP PATH
+   =========================== */
+.snake-map {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  position: relative;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 2rem;
 }
 
-.rule-item {
+.map-step {
   display: flex;
-  align-items: flex-start;
-  gap: 1.2rem;
-  padding: 1rem 1.2rem;
-  background: rgba(0, 0, 0, 0.15);
-  border-radius: 12px;
-  border-left: 3px solid var(--color-accent-blue);
-  transition: all 0.3s ease;
+  width: 100%;
+  justify-content: space-between;
+  position: relative;
+  padding-bottom: 3.5rem; /* Smaller gaps */
 }
 
-.rule-item:hover {
-  background: rgba(0, 0, 0, 0.25);
-  transform: translateX(6px);
-  border-left-color: var(--color-accent-green);
+.map-step.step-left {
+  flex-direction: row;
 }
 
-.rule-num {
-  color: var(--color-accent-blue);
-  font-size: 0.75rem;
-  min-width: 28px;
-  margin-top: 3px;
+.map-step.step-right {
+  flex-direction: row-reverse;
 }
 
-.rule-text strong {
-  font-size: 1.1rem;
+.map-step.step-last {
+  padding-bottom: 0;
+}
+
+/* ===========================
+   RUNNING AVATAR (STEVE ON SVG CURVE)
+   =========================== */
+.map-running-avatar {
+  position: absolute;
+  top: 0; left: 0;
+  z-index: 10;
+  transition: offset-distance 1s ease-in-out, transform 0.3s;
+  filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5));
+}
+
+.mini-steve {
+  position: relative;
+  width: 24px;
+  height: 48px;
+  animation: run-wobble-y 0.3s infinite alternate cubic-bezier(0.175, 0.885, 0.32, 1);
+}
+
+@keyframes run-wobble-y {
+  from { transform: translateY(0); }
+  to { transform: translateY(-5px); }
+}
+
+.ms-head {
+  position: absolute;
+  top: 0; left: 4px;
+  width: 16px; height: 16px;
+  background: #C68958;
+  border-top: 4px solid #3E2723; /* Hair */
+  z-index: 4;
+}
+
+/* Eye and Mouth details */
+.ms-eye {
+  position: absolute;
+  top: 6px;
+  width: 4px; height: 2px;
+  background: #FFF;
+}
+.ms-eye::after {
+  content: ''; display: block;
+  position: absolute; right: 0; width: 2px; height: 2px; background: #000;
+}
+.ms-eye.left { left: 2px; }
+.ms-eye.right { right: 2px; }
+.ms-mouth {
+  position: absolute;
+  bottom: 2px; left: 4px;
+  width: 8px; height: 2px;
+  background: #5A3A1A;
+}
+
+.ms-body {
+  position: absolute;
+  top: 16px; left: 6px;
+  width: 12px; height: 16px;
+  background: #00A8A8;
+  z-index: 3;
+}
+
+.ms-arm {
+  position: absolute;
+  top: 16px;
+  width: 6px; height: 16px;
+  background: #9C5D30;
+  transform-origin: top center;
+  z-index: 2;
+}
+.ms-arm-left { left: 0; animation: swing-arm 0.3s infinite alternate linear; }
+.ms-arm-right { right: 0; animation: swing-arm-rev 0.3s infinite alternate linear; z-index: 1; }
+
+.ms-leg {
+  position: absolute;
+  top: 32px;
+  width: 6px; height: 16px;
+  background: #3B38D8;
+  transform-origin: top center;
+  border-bottom: 2px solid #555;
+  z-index: 2;
+}
+.ms-leg-left { left: 6px; animation: swing-leg 0.3s infinite alternate linear; }
+.ms-leg-right { right: 6px; animation: swing-leg-rev 0.3s infinite alternate linear; z-index: 1; }
+
+@keyframes swing-leg { from { transform: rotate(-40deg); } to { transform: rotate(40deg); } }
+@keyframes swing-leg-rev { from { transform: rotate(40deg); } to { transform: rotate(-40deg); } }
+@keyframes swing-arm { from { transform: rotate(40deg); } to { transform: rotate(-40deg); } }
+@keyframes swing-arm-rev { from { transform: rotate(-40deg); } to { transform: rotate(40deg); } }
+
+
+/* ===========================
+   CARD POPPING ANIMATIONS
+   =========================== */
+.map-card {
+  width: 45%;
+  z-index: 2;
+  position: relative;
+  padding: 1.5rem;
+  background: rgba(15, 20, 25, 0.7);
+  backdrop-filter: blur(12px);
+  border-radius: 24px;
+  
+  opacity: 0.3;
+  transform: scale(0.85) translateY(40px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.map-step.active .map-card {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  border-color: var(--phase-color);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5), inset 0 0 25px rgba(0,0,0,0.3);
+}
+
+.map-step.active .map-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 24px;
+  box-shadow: inset 0 0 20px var(--phase-color);
+  pointer-events: none;
+  opacity: 0.2;
+}
+
+/* ===========================
+   THE POINT (MAP NODE)
+   =========================== */
+.map-node {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+.map-icon-container {
+  width: 56px;
+  height: 56px;
+  background: #2a2d30;
+  border-radius: 50%;
+  border: 4px solid #1a3a10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.map-step.active .map-icon-container {
+  background: var(--phase-color);
+  color: #000;
+  transform: scale(1.15);
+  box-shadow: 0 0 25px var(--phase-color), inset 0 0 10px rgba(255,255,255,0.6);
+  border-color: #0a0f14;
+}
+
+/* ===========================
+   TEXT TYPOGRAPHY
+   =========================== */
+.map-day {
+  color: #87ceeb;
+  font-size: 0.7rem;
   display: block;
-  margin-bottom: 4px;
-  color: #93c5fd;
+  margin-bottom: 0.8rem;
 }
 
-.rule-text p {
-  color: rgba(255, 255, 255, 0.65);
-  line-height: 1.5;
+.map-title {
+  color: #777;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+  transition: color 0.4s ease;
+}
+
+.map-step.active .map-title {
+  color: var(--phase-color);
+  text-shadow: 0 0 12px var(--phase-color);
+}
+
+.map-desc {
+  font-family: var(--font-modern);
   font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+}
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+@media (max-width: 768px) {
+  .map-step {
+    flex-direction: column !important;
+    padding-left: 70px;
+  }
+  
+  .map-node {
+    left: 28px;
+    transform: translateX(-50%);
+  }
+  
+  .map-card {
+    width: 100%;
+  }
 }

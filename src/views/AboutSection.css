@@ -2,56 +2,128 @@
   padding-bottom: 6rem;
 }
 
-.about-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.5rem;
-  max-width: 900px;
-  width: 100%;
-  margin-bottom: 2rem;
+.quest-intro {
+  margin-top: 1.5rem;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem 0;
 }
 
-.about-card {
-  text-align: center;
-  transition: all 0.35s ease;
+.quest-welcome {
+  color: #111111;
+  font-size: 1.6rem;
+  margin-bottom: 1.2rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-shadow: 
+    -1px -1px 2px rgba(255, 255, 255, 1),
+    2px 2px 4px rgba(255, 255, 255, 0.6),
+    0 4px 15px rgba(255, 255, 255, 0.8);
 }
 
-.about-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
-}
-
-.about-card-icon {
-  color: var(--color-accent-blue);
-  margin-bottom: 1rem;
-  display: flex;
-  justify-content: center;
-}
-
-.about-card h3 {
-  font-size: 1.3rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-}
-
-.about-card p {
-  font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.7);
-  line-height: 1.5;
-}
-
-.about-highlight {
-  max-width: 700px;
-  text-align: center;
-  border: 1px solid rgba(59, 130, 246, 0.2);
-}
-
-.about-highlight p {
-  font-size: 1.1rem;
+.quest-desc {
+  font-size: 1.15rem;
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.85);
+  color: #000000;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 5px rgba(255,255,255,0.5);
 }
 
-.about-highlight strong {
-  color: var(--color-accent-gold);
+.quest-desc strong {
+  color: #000000;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.flash-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+  max-width: 1100px;
+  width: 100%;
+}
+
+.flash-card {
+  position: relative;
+  padding: 3rem 1.5rem 1.5rem; /* Extra top padding for grass */
+  text-align: left;
+  background: #5d4037; /* Brown dirt color */
+  border: 4px solid #3e2723;
+  border-bottom-width: 8px; /* 3D bottom */
+  border-radius: 0; /* Square edges */
+  transition: all 0.35s ease;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
+
+.flash-card::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  height: 20px;
+  background: #4CAF50; /* Grass green */
+  border: 4px solid #1B5E20;
+  border-bottom: 2px solid #2E7D32;
+  z-index: 2;
+  box-shadow: inset 0 2px 5px rgba(255,255,255,0.2);
+}
+
+.flash-card::after {
+  content: '';
+  position: absolute;
+  top: 16px; /* Right beneath the grass top */
+  left: -4px; right: -4px; height: 8px;
+  background-image: linear-gradient(45deg, #2E7D32 25%, transparent 25%), 
+                    linear-gradient(-45deg, #2E7D32 25%, transparent 25%);
+  background-size: 16px 16px;
+  background-position: 0 0;
+  z-index: 1;
+}
+
+.flash-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+  background: #6d4c41; /* Slightly lighter dirt on hover */
+}
+
+.flash-icon-box {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  background: #fbc02d; /* Gold */
+  border-top: 2px solid #fff59d;
+  border-left: 2px solid #fff59d;
+  border-bottom: 4px solid #f57f17;
+  border-right: 4px solid #f57f17;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #3e2723; /* Dark brown icon */
+  margin-bottom: 1.5rem;
+  box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
+  z-index: 3;
+}
+
+.flash-title {
+  position: relative;
+  color: #ffffff;
+  font-size: 0.9rem;
+  margin-bottom: 1.2rem;
+  line-height: 1.4;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.6);
+  z-index: 3;
+}
+
+.flash-desc {
+  font-family: var(--font-pixel);
+  font-size: 0.65rem;
+  color: #d7ccc8; /* Lighter off-white/brown text */
+  line-height: 2;
+  text-transform: none;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.8);
+  position: relative;
+  z-index: 3;
 }

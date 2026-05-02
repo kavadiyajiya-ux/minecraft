@@ -2,11 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import './ScrollSteve.css';
 
 const SECTIONS = [
-  { id: 'hero', label: 'Home' },
-  { id: 'about', label: 'About' },
-  { id: 'rules', label: 'Rules' },
-  { id: 'prizes', label: 'Prizes' },
-  { id: 'registration', label: 'Register' },
+  { id: 'hero', label: 'Spawn Point' },
+  { id: 'about', label: 'The Quest' },
+  { id: 'tracks', label: 'The Five Tracks' },
+  { id: 'rules', label: 'Adventure Map' },
+  { id: 'prizes', label: 'Diamond Loot' },
+  { id: 'registration', label: 'Spawn In' },
 ];
 
 const ScrollSteve = () => {

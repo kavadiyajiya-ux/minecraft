@@ -12,12 +12,12 @@ const HeroSection = () => {
         <p className="hero-date">🗓️ October 24–25, 2026 • 24-Hour Hackathon</p>
 
         <div className="hero-actions">
-          <a href="#registration" className="hero-btn primary-btn">
-            <ExternalLink size={20} />
-            Register Now
+          <a href="#registration" className="hero-btn primary-btn pixel-text" style={{fontSize: "0.8rem"}}>
+            <ExternalLink size={16} />
+            JOIN SERVER
           </a>
-          <a href="#about" className="hero-btn secondary-btn">
-            Learn More
+          <a href="#about" className="hero-btn secondary-btn pixel-text" style={{fontSize: "0.8rem"}}>
+            VIEW QUEST
           </a>
         </div>
       </div>
